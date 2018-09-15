@@ -227,6 +227,12 @@ public final class ArrayBag<T> implements BagInterface<T> {
         //initialize length comparison as false;
         boolean sameLength = false;
 
+        if (this.isEmpty()){
+            if (aBag.isEmpty()) {
+                result = true;
+            }
+        }
+
         //copy arrays to new arrays for comparison
         T[] thisBag = this.toArray();
         T[] otherBag = aBag.toArray();
@@ -240,9 +246,12 @@ public final class ArrayBag<T> implements BagInterface<T> {
 
         //compare bag lengths
 
+
+
         if (thisBag.length == otherBag.length){
             sameLength = true;
         }
+
 
         //can't be equal if different sizes
 
