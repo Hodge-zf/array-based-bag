@@ -11,6 +11,8 @@ A class of bags whose entries are stored in a fixed-size array.
  * //- * @version 4.0
  */
 
+import java.util.Arrays;
+
 public final class ArrayBag<T> implements BagInterface<T> {
 
     private final T[] bag;
@@ -217,9 +219,50 @@ public final class ArrayBag<T> implements BagInterface<T> {
      * @return True the two bags contain the same objects with the same frequencies.
      */
     public boolean equals(ArrayBag<T> aBag) {
-        boolean result = false; // result of comparison of bags
 
-        // COMPLETE THIS METHOD 
+
+        //initialize result as false
+        boolean result = false;
+
+        //initialize length comparison as false;
+        boolean sameLength = false;
+
+        //copy arrays to new arrays for comparison
+        T[] thisBag = this.toArray();
+        T[] otherBag = aBag.toArray();
+
+
+        //Sort bags so indexes are the same lol
+        //Probably a simpler way to avoid this
+
+        Arrays.sort(thisBag);
+        Arrays.sort(otherBag);
+
+        //compare bag lengths
+
+        if (thisBag.length == otherBag.length){
+            sameLength = true;
+        }
+
+        //can't be equal if different sizes
+
+        if (sameLength) {
+
+            //iterates through bag
+            //must check every index (even duplicates) in case every entry is unique
+
+            for(int index = 0; index < otherBag.length; index++)
+            {
+
+                //get frequency of current index in one bag
+                //compare it to frequency of that entry in otherBag
+
+
+                if (getFrequencyOf(thisBag[index]) == getFrequencyOf(otherBag[index]))
+                    result = true;
+
+            }
+        }
 
         return result;
     }  // end equals
@@ -229,9 +272,9 @@ public final class ArrayBag<T> implements BagInterface<T> {
      */
     public boolean duplicateAll() {
         checkInitialization();
-        boolean success = false; // 
+        boolean success = false; //
 
-        // COMPLETE THIS METHOD 
+        // COMPLETE THIS METHOD
 
         return success;
     }  // end duplicateAll
