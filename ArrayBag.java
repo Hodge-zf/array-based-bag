@@ -12,6 +12,7 @@ A class of bags whose entries are stored in a fixed-size array.
  */
 
 import java.util.Arrays;
+import java.util.Random;
 
 public final class ArrayBag<T> implements BagInterface<T> {
 
@@ -134,14 +135,29 @@ public final class ArrayBag<T> implements BagInterface<T> {
         }
     } // end clear
 
+    public int getRandom(int range) {
+        int r = new Random().nextInt(range);
+        return r;
+    }
+
+
     /** Removes one unspecified entry from this bag, if possible.
     @return Either the removed entry, if the removal was successful,
     or null if otherwise. */
     public T remove() {
         checkInitialization();
+
+        T result;
         
     // MODIFY THIS METHOD TO REMOVE A RANDOM ITEM FROM THE BAG
-        T result = removeEntry(numberOfEntries - 1);
+        switch (numberOfEntries) {
+            case 0: result = removeEntry(numberOfEntries - 1);
+                    break;
+            default: int removedEntry = getRandom(numberOfEntries);
+                    result = removeEntry(removedEntry);
+                    break;
+        }
+
 
         return result;
     } // end remove
