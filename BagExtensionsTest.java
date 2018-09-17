@@ -1,7 +1,7 @@
 
 /**
  * This class performs tests on the extensions to the ArrayBag class.
- * 
+ *
  * @author Charles Hoot
  * @version 4.0
  */
@@ -51,6 +51,7 @@ public class BagExtensionsTest {
         checkRemove();
         checkDuplicateAll();
         checkRemoveDuplicates();
+        checkGetMode();
     }
 
     public static void initializeBags() {
@@ -570,7 +571,7 @@ public class BagExtensionsTest {
             System.out.println("*** Failed test (did not return null)");
         }
        System.out.println();
- 
+
         System.out.println("Try to remove from a bag with one item");
         if (testBag8.remove().equals("check") && testBag8.getCurrentSize() == 0) {
             System.out.println("    Passed test");
@@ -602,7 +603,7 @@ public class BagExtensionsTest {
             System.out.println("    Passed test");
         }
        System.out.println();
- 
+
 
         // Start with a bag that has 5 duplicates of each item.
         // Try removing items from the bag one at a time.  Add the removed items to a second bag.
@@ -653,7 +654,7 @@ public class BagExtensionsTest {
             System.out.println("    Passed test");
         }
        System.out.println();
- 
+
         // Test to see if the we are getting random removes
         System.out.println("Try a sequence of 27 remove/adds and see if the bag equals the original");
         System.out.println("Different strings should be removed each time.  Strings are Ax1, Bx1, Cx1, Xx2, Yx2, and Zx2");
@@ -673,7 +674,7 @@ public class BagExtensionsTest {
             System.out.println("*** should have same contents as " + testBag14.toString());
         }
        System.out.println();
- 
+
         // Check to see that the order of removals from identically constructed bags is different
 
         System.out.println("Removing values from two identically constructed bags");
@@ -829,7 +830,7 @@ public class BagExtensionsTest {
 
         }
        System.out.println();
- 
+
 
         // Check that it works on a bag with a single item
         System.out.println("Checking to see that we can remove duplicates on a singleton bag and still have the same singleton bag");
@@ -841,7 +842,7 @@ public class BagExtensionsTest {
 
         }
        System.out.println();
- 
+
         // Check that it works on a bag with two copies of the same item
         System.out.println("Checking to see a bag of two duplicates sucessfully becomes the correct singleton bag");
         testBag33.removeDuplicates();
@@ -852,7 +853,7 @@ public class BagExtensionsTest {
 
         }
        System.out.println();
- 
+
         // Check that it works on a bag with three copies of the same item
         System.out.println("Checking to see a bag of three duplicates sucessfully becomes the correct singleton bag");
         testBag34.removeDuplicates();
@@ -863,7 +864,7 @@ public class BagExtensionsTest {
 
         }
        System.out.println();
- 
+
         // Check that it works on a bag with multiple items, but no duplicates
         System.out.println("Checking to see a bag with no duplicates remains the same");
         testBag9.removeDuplicates();
@@ -874,7 +875,7 @@ public class BagExtensionsTest {
 
         }
        System.out.println();
- 
+
 
         // Check that it works on a bag where some itmes are duplicated
         System.out.println("Checking a bag with some items duplicated to see that duplicates are removed");
@@ -886,7 +887,7 @@ public class BagExtensionsTest {
 
         }
        System.out.println();
- 
+
 
         // Check that it works on a bag where every itme is duplicated
         System.out.println("Checking a bag with all items duplicated to see that duplicates are removed");
@@ -898,10 +899,23 @@ public class BagExtensionsTest {
 
         }
 
-
-
-
-
         System.out.println();
     }
+
+    public static void checkGetMode(){
+        initializeBags();
+
+        System.out.println("TESTING GET MODE");
+
+        // Check that it works on an empty bag
+        System.out.println("Checking to see that an empty bag has no mode");
+        if (testBag15.getMode() == null) {
+            System.out.println("    Passed test");
+        } else {
+            System.out.println("*** Failed test");
+
+        }
+       System.out.println();
+
+      }
 }

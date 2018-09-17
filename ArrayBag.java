@@ -4,8 +4,8 @@ A class of bags whose entries are stored in a fixed-size array.
 @author Frank M. Carrano
  * This code is from Chapter 2 of
  * Data Structures and Abstractions with Java 4/e
- *      by Carrano 
- * 
+ *      by Carrano
+ *
  * The toString method is overwritten to give a nice display of the items in
  * the bag in this format Bag{Size:# [1] [2] [3] [4] }
  * //- * @version 4.0
@@ -19,7 +19,7 @@ public final class ArrayBag<T> implements BagInterface<T> {
     private final T[] bag;
     private int numberOfEntries;
     private static final int DEFAULT_CAPACITY = 25;
-    
+
     private boolean initialized = false;
     private static final int MAX_CAPACITY = 10000;
 
@@ -62,11 +62,11 @@ public final class ArrayBag<T> implements BagInterface<T> {
             numberOfEntries++;
         } // end if
         return result;
- 
+
     } // end add
 
     /** Throws an exception if this object is not initialized.
-     * 
+     *
      */
     private void checkInitialization()
     {
@@ -74,11 +74,11 @@ public final class ArrayBag<T> implements BagInterface<T> {
              throw new SecurityException("ArrayBag object is not initialized " +
                                         "properly.");
    }
-    
+
     /** Retrieves all entries that are in this bag.
     @return A newly allocated array of all the entries in the bag. */
     public T[] toArray() {
-        
+
         // the cast is safe because the new array contains null entries
         @SuppressWarnings("unchecked")
         T[] result = (T[]) new Object[numberOfEntries]; // unchecked cast
@@ -135,6 +135,9 @@ public final class ArrayBag<T> implements BagInterface<T> {
         }
     } // end clear
 
+    //generates a random integer from a range
+    //used to generate a random entry in an array
+
     public int getRandom(int range) {
         int r = new Random().nextInt(range);
         return r;
@@ -148,8 +151,11 @@ public final class ArrayBag<T> implements BagInterface<T> {
         checkInitialization();
 
         T result;
-        
+
     // MODIFY THIS METHOD TO REMOVE A RANDOM ITEM FROM THE BAG
+
+        //Random() requires positive integer range, so empty bags throw an Exception
+
         switch (numberOfEntries) {
             case 0: result = removeEntry(numberOfEntries - 1);
                     break;
@@ -157,7 +163,6 @@ public final class ArrayBag<T> implements BagInterface<T> {
                     result = removeEntry(removedEntry);
                     break;
         }
-
 
         return result;
     } // end remove
@@ -205,15 +210,15 @@ public final class ArrayBag<T> implements BagInterface<T> {
 // equals bag[where]; otherwise, anEntry is not in the array
         return where;
     } // end getIndexOf
-    
-    
+
+
     /** Override the equals method so that we can tell if two bags contain the same items
      * the contents in the bag.
      * @return a string representation of the contents of the bag */
     public String toString() {
 
         String result = "Bag{Size:" + numberOfEntries + " ";
-        
+
 
         for (int index = 0; index < numberOfEntries; index++) {
             result += "[" + bag[index] + "] ";
@@ -224,18 +229,17 @@ public final class ArrayBag<T> implements BagInterface<T> {
     } // end toArray
 
     /*********************************************************************
-     * 
+     *
      * METHODS TO BE COMPLETED
-     * 
-     * 
+     *
+     *
      ************************************************************************/
-    
-    /** Check to see if two bags are equals.  
+
+    /** Check to see if two bags are equals.
      * @param aBag Another object to check this bag against.
      * @return True the two bags contain the same objects with the same frequencies.
      */
     public boolean equals(ArrayBag<T> aBag) {
-
 
         //initialize result as false
         boolean result = false;
@@ -262,12 +266,9 @@ public final class ArrayBag<T> implements BagInterface<T> {
 
         //compare bag lengths
 
-
-
         if (thisBag.length == otherBag.length){
             sameLength = true;
         }
-
 
         //can't be equal if different sizes
 
@@ -281,7 +282,6 @@ public final class ArrayBag<T> implements BagInterface<T> {
 
                 //get frequency of current index in one bag
                 //compare it to frequency of that entry in otherBag
-
 
                 if (getFrequencyOf(thisBag[index]) == getFrequencyOf(otherBag[index]))
                     result = true;
@@ -300,18 +300,69 @@ public final class ArrayBag<T> implements BagInterface<T> {
         boolean success = false; //
 
         // COMPLETE THIS METHOD
+        //@TODO
+        /*
 
+        //record initial number of entries
+        int initNumberOfEntries = numberOfEntries;
+
+        //duplicating zero is still zero
+        if (this.isEmpty()){
+          success = true;
+        }
+        else if (initNumberOfEntries <= ((bag.length)/2)){
+          while(numberOfEntries < bag.length){
+            for(int index = 0; index <= initNumberOfEntries; index++){
+              this.add(bag[index]);
+            }
+          success = true;
+          }
+        }
+        else{
+        } */
         return success;
     }  // end duplicateAll
-    
+
         /** Remove all duplicate items from a bag
      */
     public void removeDuplicates() {
         checkInitialization();
- 
-        // COMPLETE THIS METHOD 
+
+        // COMPLETE THIS METHOD
 
         return;
     }  // end removeDuplicates
+
+
+    //Returns the item with the greatest frequency
+    //Returns null if there is no single item with greatest frequency
+    public T getMode(){
+      checkInitialization();
+
+      T mode = null;
+      int largestFrequency = 0;
+
+      T[] thisBag = this.toArray();
+
+      //scan over each item
+      if (!this.isEmpty()){
+        for(int index = 0; index < thisBag.length; index++) {
+
+          //compare scanned items with current mode
+          //overwrite mode if bigger
+
+          if (getFrequencyOf(thisBag[index]) > largestFrequency){
+            largestFrequency = getFrequencyOf(thisBag[index]);
+            mode = thisBag[index];
+          }
+
+          //assign back to null when the check equals current largest
+          if (getFrequencyOf(thisBag[index]) == largestFrequency){
+            mode = null;
+          }
+        }
+      }
+      return mode;
+    }
 
 } // end ArrayBag
