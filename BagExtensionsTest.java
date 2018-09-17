@@ -907,15 +907,42 @@ public class BagExtensionsTest {
 
         System.out.println("TESTING GET MODE");
 
+        //check that bags modes equal the same
+
+        System.out.println("Checking to see if bag 1 is equal to itself");
+        if (testBag1.getMode() == testBag1.getMode()) {
+            System.out.println("    Passed test");
+        } else {
+            System.out.println("*** Failed test");
+        }
+        System.out.println();
+
+        System.out.println("Checking to see if bags 1 and 2 have same mode (different bags, same values");
+        if (testBag1.getMode() == testBag2.getMode()) {
+            System.out.println("    Passed test");
+        } else {
+            System.out.println("*** Failed test");
+        }
+        System.out.println();
+
         // Check that it works on an empty bag
         System.out.println("Checking to see that an empty bag has no mode");
-        if (testBag15.getMode() == null) {
+        if (testBag15.getMode() == testBag16.getMode()) {
             System.out.println("    Passed test");
         } else {
             System.out.println("*** Failed test");
 
         }
        System.out.println();
+
+       System.out.println("Checking to see that a bag with no duplicates has no mode");
+       if (testBag36.getMode() == null) {
+           System.out.println("    Passed test");
+       } else {
+           System.out.println("*** Failed test");
+
+       }
+      System.out.println();
 
       }
 }
