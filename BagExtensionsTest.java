@@ -909,7 +909,7 @@ public class BagExtensionsTest {
       System.out.println("TESTING ADD ALL");
 
       System.out.println("Initial case test");
-      if (testBag25.addAll(testBag25)){
+      if (testBag27.addAll(testBag27)){
         System.out.println("    Passed test");
       } else {
         System.out.println("*** Failed test");
