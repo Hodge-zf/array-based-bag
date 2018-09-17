@@ -369,7 +369,6 @@ public final class ArrayBag<T> implements BagInterface<T> {
       }
       if (this.isEmpty() && toAdd.isEmpty()){
         success = true;
-        System.out.println(this.toString());
       }
 
       return success;
