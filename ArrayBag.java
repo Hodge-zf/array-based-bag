@@ -334,6 +334,45 @@ public final class ArrayBag<T> implements BagInterface<T> {
     }  // end removeDuplicates
 
 
+    /*********************************************************************
+     *
+     * Post-lab Follow-Ups
+     *
+     *
+     ************************************************************************/
+
+
+    //adds all items from argument to the bag
+    //returns a boolean indicating overflow
+    //if overflow, do nothing and return false
+    //if no overflow, add and return true
+    //@TODO
+
+
+    public boolean addAll(BagInterface<T> toAdd){
+      checkInitialization();
+
+      boolean success = false;
+
+      T[] addArray = toAdd.toArray();
+      T[] thisArray = this.toArray();
+
+      System.out.println(thisArray.length);
+      System.out.println(this.getCurrentSize());
+      System.out.println(toAdd.getCurrentSize());
+
+      if ((thisArray.length - this.getCurrentSize()) >= toAdd.getCurrentSize()){
+        for (int index = 0; index < addArray.length; index++){
+          System.out.println(addArray[index]);
+          this.add(addArray[index]);
+          }
+        success = true;
+        }
+        return success;
+
+    }
+
+
     //Returns the item with the greatest frequency
     //Returns null if there is no single item with greatest frequency
     public T getMode(){
@@ -361,7 +400,7 @@ public final class ArrayBag<T> implements BagInterface<T> {
           }
 
           //pass if the entry is already stored in mode
-          //assign mode back to null if non-unique highest frequency 
+          //assign mode back to null if non-unique highest frequency
 
           if (thisBag[index] != mode && getFrequencyOf(thisBag[index]) == largestFrequency){
             mode = null;

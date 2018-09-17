@@ -52,6 +52,7 @@ public class BagExtensionsTest {
         checkDuplicateAll();
         checkRemoveDuplicates();
         checkGetMode();
+        checkAddAll();
     }
 
     public static void initializeBags() {
@@ -902,6 +903,22 @@ public class BagExtensionsTest {
         System.out.println();
     }
 
+    public static void checkAddAll(){
+      initializeBags();
+
+      System.out.println("TESTING ADD ALL");
+
+      System.out.println("Initial case test");
+      if (testBag25.addAll(testBag25)){
+        System.out.println("    Passed test");
+      } else {
+        System.out.println("*** Failed test");
+      }
+
+      System.out.println();
+
+
+    }
     public static void checkGetMode(){
         initializeBags();
 
