@@ -356,27 +356,23 @@ public final class ArrayBag<T> implements BagInterface<T> {
 
       T[] addArray = toAdd.toArray();
 
-      System.out.println("Contents of array to be added = " + toAdd.toString());
-      System.out.println("Size of current array = " + this.getCurrentSize());
-      System.out.println("Size of array to be added = " + toAdd.getCurrentSize());
 
-
-        for (int index = 0; index < addArray.length; index++){
-          if (this.isArrayFull()){
-            success = false;
-            break;
-          }
-          else {
-            this.add(addArray[index]);
-            success = true;
-          }
+      for (int index = 0; index < addArray.length; index++){
+        if (this.isArrayFull()){
+          success = false;
+          break;
         }
-
-      System.out.println(this.toString());
-
+        else {
+          this.add(addArray[index]);
+          success = true;
+        }
+      }
+      if (this.isEmpty() && toAdd.isEmpty()){
+        success = true;
+        System.out.println(this.toString());
+      }
 
       return success;
-
     }
 
 
