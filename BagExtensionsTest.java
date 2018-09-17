@@ -944,5 +944,13 @@ public class BagExtensionsTest {
        }
       System.out.println();
 
+      System.out.println("Checking to see that a bag with two modes returns null");
+      if (testBag22.getMode() == null) {
+          System.out.println("    Passed test");
+      } else {
+          System.out.println("*** Failed test");
+
+      }
+     System.out.println();
       }
 }
