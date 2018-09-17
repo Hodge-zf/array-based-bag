@@ -344,27 +344,25 @@ public final class ArrayBag<T> implements BagInterface<T> {
 
       T[] thisBag = this.toArray();
 
-      //scan over each item
+      //iterate over each item
 
         for(int index = 0; index < thisBag.length; index++) {
 
           //compare scanned items with current mode
-          //overwrite mode if bigger
           //move on if entry is already stored in mode
-          //debugging & tracing commented out
 
-          //System.out.println("Current index = " + index);
+          //overwrite mode if frequency of entry is greater than current record
 
           if (thisBag[index] != mode && getFrequencyOf(thisBag[index]) > largestFrequency){
-            //System.out.println("Current entry = " + thisBag[index]);
-            //System.out.println("Frequency of this entry = " + getFrequencyOf(thisBag[index]));
+
             largestFrequency = getFrequencyOf(thisBag[index]);
-            //System.out.println("Current largest frequency is now assigned " + largestFrequency);
             mode = thisBag[index];
-            //System.out.println("Current mode = " + mode);
+
           }
 
-          //assign back to null when the check equals current largest
+          //pass if the entry is already stored in mode
+          //assign mode back to null if non-unique highest frequency 
+
           if (thisBag[index] != mode && getFrequencyOf(thisBag[index]) == largestFrequency){
             mode = null;
 
