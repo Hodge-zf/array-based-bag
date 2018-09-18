@@ -334,6 +334,80 @@ public final class ArrayBag<T> implements BagInterface<T> {
     }  // end removeDuplicates
 
 
+    /*********************************************************************
+     *
+     * Post-lab Follow-Ups
+     *
+     *
+     ************************************************************************/
+
+     //@TODO
+
+     //split and add the contents of the bag into two bags that are passed in as arguments
+     //The method will return a boolean value. If either bag overflows, return false. Otherwise, return true.
+     //If there are an odd number of items, put the extra item into the first bag.
+
+     public boolean splitInto(BagInterface<T> first, BagInterface<T> second){
+       checkInitialization();
+
+       boolean success = false;
+       T[] thisArray = this.toArray();
+
+       if((thisArray.length)%2 == 0){
+         for (int index = 0; index < thisArray.length; index++){
+           if(first.isArrayFull() && index > ((thisArray.length)/2)){
+             success = false;
+             break;
+           }
+           else if(!first.isArrayFull() && index < ((thisArray.length)/2)){
+             first.add(thisArray[index]);
+           }
+           else if(second.isArrayFull() && index < (thisArray.Arraylength)){
+             success = false;
+             break;
+           }
+          else if(!second.isArrayFull() && index < (thisArray.length)){
+            second.add(thisArray[index]);
+          }
+        }
+      }
+       return success;
+     }
+
+
+
+    //adds all items from argument to the bag
+    //returns a boolean indicating overflow
+    //if overflow, do nothing and return false
+    //if no overflow, add and return true
+
+    public boolean addAll(BagInterface<T> toAdd){
+      checkInitialization();
+
+      boolean success = false;
+
+      T[] addArray = toAdd.toArray();
+
+
+      for (int index = 0; index < addArray.length; index++){
+        if (this.isArrayFull()){
+          success = false;
+          break;
+        }
+        else {
+          this.add(addArray[index]);
+          success = true;
+        }
+      }
+
+      if (this.isEmpty() && toAdd.isEmpty()){
+        success = true;
+      }
+
+      return success;
+    }
+
+
     //Returns the item with the greatest frequency
     //Returns null if there is no single item with greatest frequency
     public T getMode(){
@@ -361,7 +435,7 @@ public final class ArrayBag<T> implements BagInterface<T> {
           }
 
           //pass if the entry is already stored in mode
-          //assign mode back to null if non-unique highest frequency 
+          //assign mode back to null if non-unique highest frequency
 
           if (thisBag[index] != mode && getFrequencyOf(thisBag[index]) == largestFrequency){
             mode = null;

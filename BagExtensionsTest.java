@@ -52,6 +52,7 @@ public class BagExtensionsTest {
         checkDuplicateAll();
         checkRemoveDuplicates();
         checkGetMode();
+        checkAddAll();
     }
 
     public static void initializeBags() {
@@ -902,6 +903,50 @@ public class BagExtensionsTest {
         System.out.println();
     }
 
+    public static void checkAddAll(){
+      initializeBags();
+
+      System.out.println("TESTING ADD ALL");
+
+      System.out.println("Checking that two bags at exactly half capacity can be added to full capacity");
+      if (testBag27.addAll(testBag27)) {
+          System.out.println("    Passed test");
+      } else {
+          System.out.println("*** Failed test");
+
+      }
+
+      System.out.println();
+
+      System.out.println("Checking that it fails from overflow");
+      if (!testBag37.addAll(testBag24)) {
+          System.out.println("    Passed test");
+      } else {
+          System.out.println("*** Failed test");
+
+      }
+
+      System.out.println();
+
+      System.out.println("Checking to see that an empty bag can be added to an empty bag");
+      if (testBag15.addAll(testBag16)) {
+          System.out.println("    Passed test");
+      } else {
+          System.out.println("*** Failed test");
+
+      }
+     System.out.println();
+
+     System.out.println("Checking to see that a bag can be added to an empty bag with enough room");
+     if (testBag15.addAll(testBag31)) {
+         System.out.println("    Passed test");
+     } else {
+         System.out.println("*** Failed test");
+
+     }
+    System.out.println();
+
+    }
     public static void checkGetMode(){
         initializeBags();
 
@@ -917,7 +962,7 @@ public class BagExtensionsTest {
         }
         System.out.println();
 
-        System.out.println("Checking to see if bags 1 and 2 have same mode (different bags, same values");
+        System.out.println("Checking to see if bags 1 and 2 have same mode");
         if (testBag1.getMode() == testBag2.getMode()) {
             System.out.println("    Passed test");
         } else {
