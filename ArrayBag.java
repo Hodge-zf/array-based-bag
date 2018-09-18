@@ -341,13 +341,45 @@ public final class ArrayBag<T> implements BagInterface<T> {
      *
      ************************************************************************/
 
+     //@TODO
+
+     //split and add the contents of the bag into two bags that are passed in as arguments
+     //The method will return a boolean value. If either bag overflows, return false. Otherwise, return true.
+     //If there are an odd number of items, put the extra item into the first bag.
+
+     public boolean splitInto(BagInterface<T> first, BagInterface<T> second){
+       checkInitialization();
+
+       boolean success = false;
+       T[] thisArray = this.toArray();
+
+       if((thisArray.length)%2 == 0){
+         for (int index = 0; index < thisArray.length; index++){
+           if(first.isArrayFull() && index > ((thisArray.length)/2)){
+             success = false;
+             break;
+           }
+           else if(!first.isArrayFull() && index < ((thisArray.length)/2)){
+             first.add(thisArray[index]);
+           }
+           else if(second.isArrayFull() && index < (thisArray.Arraylength)){
+             success = false;
+             break;
+           }
+          else if(!second.isArrayFull() && index < (thisArray.length)){
+            second.add(thisArray[index]);
+          }
+        }
+      }
+       return success;
+     }
+
+
 
     //adds all items from argument to the bag
     //returns a boolean indicating overflow
     //if overflow, do nothing and return false
     //if no overflow, add and return true
-    //@TODO
-
 
     public boolean addAll(BagInterface<T> toAdd){
       checkInitialization();
@@ -367,6 +399,7 @@ public final class ArrayBag<T> implements BagInterface<T> {
           success = true;
         }
       }
+
       if (this.isEmpty() && toAdd.isEmpty()){
         success = true;
       }
