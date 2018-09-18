@@ -301,25 +301,20 @@ public final class ArrayBag<T> implements BagInterface<T> {
 
         // COMPLETE THIS METHOD
         //@TODO
-        /*
+
 
         //record initial number of entries
         int initNumberOfEntries = numberOfEntries;
 
-        //duplicating zero is still zero
-        if (this.isEmpty()){
-          success = true;
-        }
-        else if (initNumberOfEntries <= ((bag.length)/2)){
-          while(numberOfEntries < bag.length){
-            for(int index = 0; index <= initNumberOfEntries; index++){
+
+        if (initNumberOfEntries <= ((bag.length)/2)){
+          while(numberOfEntries < initNumberOfEntries*2){
+            for(int index = 0; index < initNumberOfEntries; index++){
               this.add(bag[index]);
             }
-          success = true;
           }
+          success = true;
         }
-        else{
-        } */
         return success;
     }  // end duplicateAll
 
@@ -347,7 +342,7 @@ public final class ArrayBag<T> implements BagInterface<T> {
      //The method will return a boolean value. If either bag overflows, return false. Otherwise, return true.
      //If there are an odd number of items, put the extra item into the first bag.
 
-     public boolean splitInto(BagInterface<T> first, BagInterface<T> second){
+  /*   public boolean splitInto(BagInterface<T> first, BagInterface<T> second){
        checkInitialization();
 
        boolean success = false;
@@ -372,7 +367,7 @@ public final class ArrayBag<T> implements BagInterface<T> {
         }
       }
        return success;
-     }
+     } */
 
 
 
