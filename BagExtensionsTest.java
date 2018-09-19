@@ -44,6 +44,9 @@ public class BagExtensionsTest {
     private static ArrayBag<String> testBag35 = new ArrayBag<String>(50);
     private static ArrayBag<String> testBag36 = new ArrayBag<String>();
     private static ArrayBag<String> testBag37 = new ArrayBag<String>(50);
+    private static ArrayBag<String> testBag38 = new ArrayBag<String>(10);
+    private static ArrayBag<String> testBag39 = new ArrayBag<String>(10);
+    private static ArrayBag<String> testBag40 = new ArrayBag<String>(6);
 
     public static void main(String args[]) {
 
@@ -51,6 +54,7 @@ public class BagExtensionsTest {
         checkRemove();
         checkDuplicateAll();
         checkRemoveDuplicates();
+        checkSplitInto();
         checkGetMode();
         checkAddAll();
     }
@@ -901,6 +905,24 @@ public class BagExtensionsTest {
         }
 
         System.out.println();
+    }
+
+    public static void checkSplitInto(){
+      initializeBags();
+
+      System.out.println("TESTING SPLIT INTO");
+
+      System.out.println("Checking that an even bag can be split into two bags [base case]");
+
+      if (testBag1.splitInto(testBag38, testBag39)){
+        System.out.println("    Passed test");
+    } else {
+        System.out.println("*** Failed test");
+
+    }
+
+    System.out.println();
+
     }
 
     public static void checkAddAll(){
