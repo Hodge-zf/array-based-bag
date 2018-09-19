@@ -331,8 +331,6 @@ public final class ArrayBag<T> implements BagInterface<T> {
      *
      ************************************************************************/
 
-     //@TODO
-
      //split and add the contents of the bag into two bags that are passed in as arguments
      //The method will return a boolean value. If either bag overflows, return false. Otherwise, return true.
      //If there are an odd number of items, put the extra item into the first bag.
@@ -347,41 +345,24 @@ public final class ArrayBag<T> implements BagInterface<T> {
 
        if((thisArray.length)%2 == 0){
           while(index < (thisArray.length)/2 && first.add(thisArray[index])){
-            System.out.println(first.toString());
             index++;
-            System.out.println(index);
            }
-           System.out.println("Full bag 1 = " + first.toString());
 
            while(index > (((thisArray.length)/2)-1) && index < thisArray.length && second.add(thisArray[index])){
-             System.out.println(second.toString());
              index++;
              success = true;
            }
-           System.out.println("Second bag 2 = " + second.toString());
-           
-
-
       }
 
-       /* if((thisArray.length)%2 == 0){
-         for (int index = 0; index < thisArray.length; index++){
-           if(first.isArrayFull() && index > ((thisArray.length)/2)){
-             success = false;
-             break;
-           }
-           else if(!first.isArrayFull() && index < ((thisArray.length)/2)){
-             first.add(thisArray[index]);
-           }
-           else if(second.isArrayFull() && index < (thisArray.length)){
-             success = false;
-             break;
-           }
-          else if(!second.isArrayFull() && index < (thisArray.length)){
-            second.add(thisArray[index]);
+      if((thisArray.length)%2 == 1){
+         while(index < (thisArray.length + 1)/2 && first.add(thisArray[index])){
+           index++;
           }
-        }
-      }*/
+          while(index > (((thisArray.length + 1)/2)-1) && index < thisArray.length && second.add(thisArray[index])){
+            index++;
+            success = true;
+          }
+      }
        return success;
      }
 

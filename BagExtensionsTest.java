@@ -46,14 +46,23 @@ public class BagExtensionsTest {
     private static ArrayBag<String> testBag37 = new ArrayBag<String>(50);
     private static ArrayBag<String> testBag38 = new ArrayBag<String>(10);
     private static ArrayBag<String> testBag39 = new ArrayBag<String>(10);
-    private static ArrayBag<String> testBag40 = new ArrayBag<String>(6);
+    private static ArrayBag<String> testBag40 = new ArrayBag<String>(2);
+    private static ArrayBag<String> testBag41 = new ArrayBag<String>(2);
+    private static ArrayBag<String> testBag42 = new ArrayBag<String>(10);
+    private static ArrayBag<String> testBag43 = new ArrayBag<String>(10);
+    private static ArrayBag<String> testBag44 = new ArrayBag<String>(10);
+    private static ArrayBag<String> testBag45 = new ArrayBag<String>(10);
+    private static ArrayBag<String> testBag46 = new ArrayBag<String>(2);
+    private static ArrayBag<String> testBag47 = new ArrayBag<String>(1);
+    private static ArrayBag<String> testBag48 = new ArrayBag<String>(2);
+    private static ArrayBag<String> testBag49 = new ArrayBag<String>(2);
 
     public static void main(String args[]) {
 
-        checkEquals();
+        /*checkEquals();
         checkRemove();
         checkDuplicateAll();
-        checkRemoveDuplicates();
+        checkRemoveDuplicates();*/
         checkSplitInto();
         checkGetMode();
         checkAddAll();
@@ -912,7 +921,7 @@ public class BagExtensionsTest {
 
       System.out.println("TESTING SPLIT INTO");
 
-      System.out.println("Checking that an even bag can be split into two bags [base case]");
+      System.out.println("Checking that an even bag can be split into two bags with extra room");
 
       if (testBag1.splitInto(testBag38, testBag39)){
         System.out.println("    Passed test");
@@ -921,9 +930,62 @@ public class BagExtensionsTest {
 
     }
 
-    System.out.println();
+      System.out.println();
 
+      System.out.println("Checking that an even bag can be split into two bags with exactly enough room");
+
+      if (testBag1.splitInto(testBag40, testBag41)){
+        System.out.println("    Passed test");
+    } else {
+      System.out.println("*** Failed test");
+
+      }
+
+      System.out.println();
+
+      System.out.println("Checking that an even bag fails being split without enough room");
+
+      if (!testBag37.splitInto(testBag42, testBag43)){
+        System.out.println("    Passed test");
+      } else {
+        System.out.println("*** Failed test");
+
+      }
+
+      System.out.println();
+
+      System.out.println("Checking that an odd bag can be split into two bags with extra room");
+
+      if (testBag4.splitInto(testBag44, testBag45)){
+        System.out.println("    Passed test");
+    } else {
+        System.out.println("*** Failed test");
+
+      }
+
+      System.out.println();
+
+      System.out.println("Checking that an odd bag can be split into two bags with exactly enough room");
+
+      if (testBag4.splitInto(testBag46, testBag47)){
+        System.out.println("    Passed test");
+    } else {
+      System.out.println("*** Failed test");
+
+      }
+
+      System.out.println();
+
+      System.out.println("Checking that an even bag fails being split without enough room");
+
+      if (!testBag36.splitInto(testBag48, testBag49)){
+        System.out.println("    Passed test");
+      } else {
+        System.out.println("*** Failed test");
+
+      }
     }
+
 
     public static void checkAddAll(){
       initializeBags();
