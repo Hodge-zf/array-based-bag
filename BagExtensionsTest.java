@@ -59,11 +59,12 @@ public class BagExtensionsTest {
 
     public static void main(String args[]) {
 
-        /*checkEquals();
+        checkEquals();
         checkRemove();
         checkDuplicateAll();
-        checkRemoveDuplicates();*/
+        checkRemoveDuplicates();
         checkSplitInto();
+        checkIsASet();
         checkGetMode();
         checkAddAll();
     }
@@ -1031,6 +1032,48 @@ public class BagExtensionsTest {
     System.out.println();
 
     }
+
+    public static void checkIsASet(){
+      initializeBags();
+
+      System.out.println("TESTING IS A SET");
+
+      System.out.println("Checking if a bag with one entry is a set");
+      if (testBag8.isASet()){
+        System.out.println("    Passed test");
+    } else {
+        System.out.println("*** Failed test");
+    }
+      System.out.println();
+
+      System.out.println("Checking if a bag with unique entries is a set");
+      if (testBag36.isASet()){
+        System.out.println("    Passed test");
+    } else {
+        System.out.println("*** Failed test");
+    }
+
+      System.out.println();
+
+      System.out.println("Checking if a bag with no entries is the empty set");
+      if (testBag15.isASet()){
+        System.out.println("    Passed test");
+    } else {
+        System.out.println("*** Failed test");
+    }
+      System.out.println();
+
+      System.out.println("Checking if a bag with non-unique entries is not set");
+      if (!testBag27.isASet()){
+        System.out.println("    Passed test");
+    } else {
+        System.out.println("*** Failed test");
+    }
+
+      System.out.println();
+
+    }
+
     public static void checkGetMode(){
         initializeBags();
 
@@ -1038,7 +1081,7 @@ public class BagExtensionsTest {
 
         //check that bags modes equal the same
 
-        System.out.println("Checking to see if bag 1 is equal to itself");
+        System.out.println("Checking to see if bag 1 mode is equal to itself");
         if (testBag1.getMode() == testBag1.getMode()) {
             System.out.println("    Passed test");
         } else {

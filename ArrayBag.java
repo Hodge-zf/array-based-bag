@@ -399,6 +399,31 @@ public final class ArrayBag<T> implements BagInterface<T> {
       return success;
     }
 
+    public boolean isASet(){
+      checkInitialization();
+
+      boolean result = false;
+
+      T[] thisBag = this.toArray();
+
+      //Check if bag is the empty set
+      if(this.isEmpty()){
+        result = true;
+      }
+
+      for(int index = 0; index < thisBag.length; index++){
+        if (getFrequencyOf(thisBag[index]) <= 1){
+          result = true;
+        }
+        else{
+          result = false;
+          break;
+        }
+      }
+
+      return result;
+
+    }
 
     //Returns the item with the greatest frequency
     //Returns null if there is no single item with greatest frequency
